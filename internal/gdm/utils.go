@@ -1,0 +1,23 @@
+package gdm
+
+import (
+	"flag"
+	"fmt"
+)
+
+var (
+	URL string
+	Filename string
+)
+
+func InitFlags() {
+	flag.Usage = func() {
+		fmt.Fprintf(flag.CommandLine.Output(), "Please use the following flags\n")
+		flag.PrintDefaults()
+	}
+	flag.StringVar(&URL, "url", "", "url to the resource you want to download")
+	flag.StringVar(&URL, "u", "", "url to the resource you want to download")
+	flag.StringVar(&Filename, "filename", "", "filename to to save as")
+	flag.StringVar(&Filename, "f", "", "filename to to save as")
+	flag.Parse()
+}
