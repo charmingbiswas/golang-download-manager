@@ -6,8 +6,5 @@ import (
 
 func main() {
 	gdm.InitFlags()
-
-	if(gdm.URL != "") {
-		panic("Please provide a valid url for download")
-	}
+	gdm.NewDownloadClient()
 }

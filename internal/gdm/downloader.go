@@ -1,12 +1,20 @@
 package gdm
 
-type download struct {
-	filename string
+type downloadClient struct {
+	fileName string
 	url string
-	totalSections int // number of requests to make to the server to downloads sections of the file. Generally will be 8, more than this, server may rate limit us
+	totalSections int
+	totalSize int
+	fileType string
 }
 
-func(d *download) NewDownloader(url string, filename string) *download {
-	return &download{url: url, filename: filename}
-}
 
+func NewDownloadClient() *downloadClient {
+	return &downloadClient{
+		url: URL,
+		fileName: Filename,
+		totalSections: 8, // hardcoding this value, just to be safe. This denotes the number of requests the app makes to the server to download the resource. Too many requests can make the server block our IP
+		totalSize: 0, // will be updated later via API
+		fileType: "", // will be updated later via API
+	}
+}
