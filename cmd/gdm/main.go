@@ -1,10 +1,16 @@
 package main
 
 import (
+	"log"
+
 	"github.com/charmingbiswas/golang-download-manager/internal/gdm"
 )
 
 func main() {
-	gdm.InitFlags()
-	gdm.NewDownloadClient()
+	gdm.InitApp()
+	dc := gdm.NewDownloadClient()
+	err := dc.StartDownload()
+	if err != nil {
+		log.Fatal(err)
+	}
 }
