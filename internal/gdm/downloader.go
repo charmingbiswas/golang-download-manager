@@ -94,7 +94,7 @@ func (d *downloadClient) fetchMetaData() error {
 	if res.StatusCode > 299 {
 		return fmt.Errorf("invalid response from server")
 	}
-	
+	fmt.Println(res)
 	fileSize, err := strconv.Atoi(res.Header.Get("Content-Length"))
 	if err != nil {
 		return err
@@ -103,7 +103,8 @@ func (d *downloadClient) fetchMetaData() error {
 	contentType := res.Header.Get("Content-Type")
 	fileType, ok := MimeTypes[contentType]
 	if !ok {
-		return fmt.Errorf("file type currently not supported")
+		fileType = ".mp4" // hardcoded for now, later extract type from url if possible
+		// return fmt.Errorf("file type currently not supported: %s", contentType)
 	}
 	
 	d.fileType = fileType
