@@ -129,7 +129,7 @@ func (d *downloadClient) downloadSection(i int, s[2]int64) error {
 		return err
 	}
 	defer file.Close()
-	buffer := make([]byte, 32 * 1024) //  buffer
+	buffer := make([]byte, 1024 * 1024) // buffer size
 	fmt.Printf("Downloading bytes for section-%d\n", i)
 	for {
 		bytesRead, err := res.Body.Read(buffer)
