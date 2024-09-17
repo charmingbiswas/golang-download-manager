@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/charmingbiswas/golang-download-manager/internal/gdm"
+	"github.com/charmingbiswas/golang-download-manager/gdm"
 )
 
 func main() {

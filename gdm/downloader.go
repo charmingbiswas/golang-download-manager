@@ -85,13 +85,15 @@ func (d *downloadClient) fetchMetaData() error {
 	if err != nil {
 		return err
 	}
-
+	req.Header.Set("User-Agent", "gdm")
+	req.Header.Set("Accept-Language", "en-GB,en;q=0.9,en-US;q=0.8,pt;q=0.7")
 	res, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return err
 	}
 	
 	if res.StatusCode > 299 {
+		fmt.Println(res.StatusCode)
 		return fmt.Errorf("invalid response from server")
 	}
 	fmt.Println(res)
